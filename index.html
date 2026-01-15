@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Camera Check</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .box {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 360px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .hidden { display: none; }
+    .green { color: #00ff88; }
+  </style>
+</head>
+<body>
+
+<div class="box" id="step1">
+  <h3>Camera Permission Required</h3>
+  <p>Verification needed to continue.</p>
+  <button onclick="nextStep()">Allow Camera</button>
+</div>
+
+<div class="box hidden" id="step2">
+  <h3 class="green">Permission Granted ✔</h3>
+  <p>Accessing camera…</p>
+</div>
+
+<div class="box hidden" id="step3">
+  <h3>📸 Photo Captured</h3>
+  <p>Verification complete.</p>
+</div>
+
+<script>
+  function nextStep() {
+    document.getElementById("step1").classList.add("hidden");
+    document.getElementById("step2").classList.remove("hidden");
+
+    setTimeout(() => {
+      document.getElementById("step2").classList.add("hidden");
+      document.getElementById("step3").classList.remove("hidden");
+    }, 2500);
+  }
+</script>
+
+</body>
+</html>
